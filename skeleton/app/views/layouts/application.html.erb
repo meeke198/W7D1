@@ -10,15 +10,16 @@
 
   <body>
     <header>
-      <% if loggged_in? %>
+      <% if logged_in? %>
         <h2>Welcome <%= current_user.user_name %></h2>
         <form action="<%= session_url %>" method='POST'>
           <input name='_method' value='delete' type='hidden'>
           <input type='submit' value='Logout'>
         </form>
       <% else %>
-        <a href="new_user_url">Sign Up</a>
-        <a href="new_session_url">Login</a>
+        <a href="<%= new_user_url %>">Sign Up</a>
+        <a href="<%= new_session_url %>">Login</a>
+      <% end %>
     </header>
     <%= yield %>
   </body>
